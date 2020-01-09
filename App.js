@@ -6,6 +6,7 @@ import {globalStyle} from "./style/global";
 import AppHeader from "./components/AppHeader";
 import ScanButton from "./components/ScanButton";
 import ProductItem from "./components/ProductItem";
+import { RNCamera} from 'react-native-camera';
 
 export default class App extends React.Component {
   constructor(){
@@ -64,6 +65,20 @@ export default class App extends React.Component {
             Alert.alert('Modal has been closed');}}>
           <View style={{flex: 1}}>
             <AppHeader title="Sanner" />
+
+            <RNCamera
+          ref={ref => {
+            this.camera = ref;
+          }}
+          style={{flex: 1}}
+          type={RNCamera.Constants.Type.back}
+          androidCameraPermissionOptions={{
+            title: 'Permission to use camera',
+            message: 'We need your permission to use your camera',
+            buttonPositive: 'Ok',
+            buttonNegative: 'Cancel',
+          }}
+        />
 
             <TouchableOpacity 
               onPress={() => {
