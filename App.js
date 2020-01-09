@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
+import {Button, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View, Modal, TouchableHighlight, Alert} from 'react-native';
 import {homeStyle} from './style/home';
 import {fontsStyle} from "./style/fonts";
 import {globalStyle} from "./style/global";
@@ -30,6 +30,14 @@ export default class App extends React.Component {
     alert('Je clique sur un produit avec l\'id : ' + id)
   };
 
+  state = {
+    modalVisible: false,
+  };
+
+  setModalVisible(visible) {
+    this.setState({modalVisible: visible});
+  }
+
   render() {
     return (
       <View style={globalStyle.container}>
@@ -48,6 +56,22 @@ export default class App extends React.Component {
            )
           }
         </ScrollView>
+        <Modal animationType="slide" transparent={false} visible={this.state.modalVisible} onRequestClose={() => {Alert.alert('Modal has been closed');}}>
+          <View style={{marginTop: 22}}>
+            <View>
+              <Text>Hello World!</Text>
+
+              <TouchableHighlight onPress={() => {this.setModalVisible(!this.state.modalVisible);}}>
+                <Text>Hide Modal</Text>
+              </TouchableHighlight>
+            </View>
+          </View>
+        </Modal>
+
+        <TouchableHighlight onPress={() => {this.setModalVisible(true);}}>
+          <Text>Show Modal</Text>
+        </TouchableHighlight>
+
       </View>
     );
   }
