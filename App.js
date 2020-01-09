@@ -11,7 +11,11 @@ export default class App extends React.Component {
   constructor(){
     super();
 
-    this.products = [
+    this.state = {
+      modalVisible: false,
+    };
+    
+      this.products = [
       {id: 1, name : 'Coca', date: new Date()},
       {id: 2, name : 'Orangina', date: new Date()},
       {id: 3, name : 'Nestea', date: new Date()},
@@ -21,22 +25,18 @@ export default class App extends React.Component {
     this.title = "Yoki"
   }
 
+  setModalVisible =(bool) => {
+    this.setState({modalVisible: bool});
+  }
 
   handleScanPress = () => {
-    alert('Je scan un produit')
+    this.setModalVisible(true)
+    //alert('Je scan un produit')
   };
 
   handleProductPress = (id) => {
     alert('Je clique sur un produit avec l\'id : ' + id)
   };
-
-  state = {
-    modalVisible: false,
-  };
-
-  setModalVisible(visible) {
-    this.setState({modalVisible: visible});
-  }
 
   render() {
     return (
@@ -57,21 +57,26 @@ export default class App extends React.Component {
           }
         </ScrollView>
         <Modal animationType="slide" transparent={false} visible={this.state.modalVisible} onRequestClose={() => {Alert.alert('Modal has been closed');}}>
-          <View style={{marginTop: 22}}>
-            <View>
-              <Text>Hello World!</Text>
+          <View style={{flex: 1}}>
+            <AppHeader title="Sanner" />
 
-              <TouchableHighlight onPress={() => {this.setModalVisible(!this.state.modalVisible);}}>
+            <TouchableOpacity 
+              onPress={() => {
+                this.setModalVisible(!this.state.modalVisible);
+              }}
+              style={{
+                position: "absolute", 
+                backgroundColor: "lightblue", 
+                width: "100%",
+                height: 70,
+                left: 0, 
+                bottom: 0}}>
+
+
                 <Text>Hide Modal</Text>
-              </TouchableHighlight>
-            </View>
+            </TouchableOpacity>              
           </View>
         </Modal>
-
-        <TouchableHighlight onPress={() => {this.setModalVisible(true);}}>
-          <Text>Show Modal</Text>
-        </TouchableHighlight>
-
       </View>
     );
   }
