@@ -56,7 +56,12 @@ export default class App extends React.Component {
            )
           }
         </ScrollView>
-        <Modal animationType="slide" transparent={false} visible={this.state.modalVisible} onRequestClose={() => {Alert.alert('Modal has been closed');}}>
+        <Modal
+          animationType="slide"
+          transparent={false}
+          visible={this.state.modalVisible}
+          onRequestClose={() => {
+            Alert.alert('Modal has been closed');}}>
           <View style={{flex: 1}}>
             <AppHeader title="Sanner" />
 
