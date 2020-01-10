@@ -6,6 +6,7 @@ import {globalStyle} from "./style/global";
 import AppHeader from "./components/AppHeader";
 import ScanButton from "./components/ScanButton";
 import ProductItem from "./components/ProductItem";
+import ProductText from "./components/ProductText";
 import { RNCamera } from 'react-native-camera';
 
 export default class App extends React.Component {
@@ -21,10 +22,13 @@ export default class App extends React.Component {
         {id: 3, name : 'Nestea', date: new Date()},
         {id: 4, name : 'Bière sans alcool', date: new Date()}
       ],
+      lastproduct: null
     };
     
 
     this.title = "Yoki"
+
+
   }
 //Modal du scanner
   setModalVisible =(bool) => {
@@ -80,6 +84,7 @@ export default class App extends React.Component {
  
     _products.push(newProduct); // ajout du nouveau produit
     this.setState({products : _products}); // on set les nouveau produits dans le state
+    this.setState({lastproduct : scannedProduct});
     this.setState({modalScanVisible: false});
   };
 
@@ -108,7 +113,7 @@ export default class App extends React.Component {
           onRequestClose={() => {
             Alert.alert('Modal has been closed');}}>
           <View style={{flex: 1}}>
-            <AppHeader title="Sanner" />
+            <AppHeader title="Scanner" />
 
             <RNCamera
           ref={ref => {
@@ -146,28 +151,27 @@ export default class App extends React.Component {
           transparent={false}
           visible={this.state.modalProductVisible}
           onRequestClose={() => {
-            Alert.alert('Modal has been closed');}}>
+            Alert.alert('Modal has been closed.');
+          }}>
           <View style={{flex: 1}}>
-            <AppHeader title={this.state.products[0].name} />
-              <Text style={fontsStyle.productName}>
-                {this.state.products[0].name}
-              </Text>
+              <AppHeader title="Produit Scanné"/>
 
-            <TouchableOpacity 
-              onPress={() => {
-                this.setModalProductVisible(!this.state.modalProductVisible);
-              }}
-              style={{
-                position: "absolute", 
-                backgroundColor: "lightblue", 
-                width: "100%",
-                height: 70,
-                left: 0, 
-                bottom: 0}}>
+              <ProductText data={this.state.lastproduct}/>
 
+              <TouchableOpacity 
+                onPress={() => {
+                  this.setModalProductVisible(!this.state.modalProductVisible);
+                }}
+                style={{
+                  position: "absolute", 
+                  backgroundColor: "orange", 
+                  width: "100%",
+                  height: 70,
+                  left: 0, 
+                  bottom: 0}}>
 
-                <Text>Hide Modal</Text>
-            </TouchableOpacity>              
+                <Text>Fermer</Text>
+              </TouchableOpacity>
           </View>
         </Modal>
       </View>
