@@ -6,7 +6,7 @@ import {globalStyle} from "./style/global";
 import AppHeader from "./components/AppHeader";
 import ScanButton from "./components/ScanButton";
 import ProductItem from "./components/ProductItem";
-import { RNCamera} from 'react-native-camera';
+import { RNCamera } from 'react-native-camera';
 
 export default class App extends React.Component {
   constructor(){
@@ -14,6 +14,7 @@ export default class App extends React.Component {
 
     this.state = {
       modalVisible: false,
+      modalProductVisible: false,
       products : [
         {id: 1, name : 'Coca', date: new Date()},
         {id: 2, name : 'Orangina', date: new Date()},
@@ -30,15 +31,21 @@ export default class App extends React.Component {
     this.setState({modalVisible: bool});
   }
 
-  handleScanPress = () => {
+  setModalProductVisible =(bool) => {
+    this.setState({modalProductVisible: bool});
+  }
+
+  handleScanPress = async () => {
     this.setModalVisible(true)
     //alert('Je scan un produit')
+
+    await this._handleBarCodeRead({type: 'EAN', data: '8000500037560'})
   };
 
   handleProductPress = async (id) => {
     //alert('Je clique sur un produit avec l\'id : ' + id)
+    this.setModalProductVisible(true)
 
-    await this._handleBarCodeRead({type: 'EAN', data: '8000500037560'})
   };
 
   async getProductFromApi(barcode) {
@@ -118,6 +125,31 @@ export default class App extends React.Component {
             <TouchableOpacity 
               onPress={() => {
                 this.setModalVisible(!this.state.modalVisible);
+              }}
+              style={{
+                position: "absolute", 
+                backgroundColor: "lightblue", 
+                width: "100%",
+                height: 70,
+                left: 0, 
+                bottom: 0}}>
+
+
+                <Text>Hide Modal</Text>
+            </TouchableOpacity>              
+          </View>
+        </Modal>
+        <Modal
+          animationType="slide"
+          transparent={false}
+          visible={this.state.modalProductVisible}
+          onRequestClose={() => {
+            Alert.alert('Modal has been closed');}}>
+          <View style={{flex: 1}}>
+            <AppHeader title="Sanner" />
+            <TouchableOpacity 
+              onPress={() => {
+                this.setModalProductVisible(!this.state.modalProductVisible);
               }}
               style={{
                 position: "absolute", 

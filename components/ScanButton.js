@@ -2,7 +2,6 @@ import React from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
 import {homeStyle} from "../style/home";
 import {fontsStyle} from "../style/fonts";
-import { RNCamera} from 'react-native-camera';
 
 export default class ScanButton extends React.Component {
   constructor() {
