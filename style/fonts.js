@@ -5,6 +5,14 @@ export const fontsStyle = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold'
   },
+
+  nutriScore: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: 'red',
+    textTransform: "uppercase",
+  },
+
   productScanDate: {
     color: 'gray',
     fontSize: 12

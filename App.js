@@ -106,6 +106,7 @@ export default class App extends React.Component {
            )
           }
         </ScrollView>
+        {/*modal du scanner*/}
         <Modal
           animationType="slide"
           transparent={false}
@@ -142,10 +143,12 @@ export default class App extends React.Component {
                 bottom: 0}}>
 
 
-                <Text>Hide Modal</Text>
+                <Text>Fermer</Text>
             </TouchableOpacity>              
           </View>
         </Modal>
+        
+        {/*modal des Produit*/}
         <Modal
           animationType="slide"
           transparent={false}
@@ -164,7 +167,7 @@ export default class App extends React.Component {
                 }}
                 style={{
                   position: "absolute", 
-                  backgroundColor: "orange", 
+                  backgroundColor: "lightblue", 
                   width: "100%",
                   height: 70,
                   left: 0, 
