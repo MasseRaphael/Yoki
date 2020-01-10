@@ -15,7 +15,7 @@ export default class App extends React.Component {
     this.state = {
       modalVisible: false,
       modalProductVisible: false,
-      products : [
+      products: [
         {id: 1, name : 'Coca', date: new Date()},
         {id: 2, name : 'Orangina', date: new Date()},
         {id: 3, name : 'Nestea', date: new Date()},
@@ -26,28 +26,30 @@ export default class App extends React.Component {
 
     this.title = "Yoki"
   }
-
+//Modal du scanner
   setModalVisible =(bool) => {
     this.setState({modalVisible: bool});
   }
-
+//Modal du Produit
   setModalProductVisible =(bool) => {
     this.setState({modalProductVisible: bool});
   }
 
+//Ouvre le scanner et ajoute un produit à la liste  
   handleScanPress = async () => {
     this.setModalVisible(true)
-    //alert('Je scan un produit')
-
+    
     await this._handleBarCodeRead({type: 'EAN', data: '8000500037560'})
   };
 
+//Ouvre la fiche du produit
   handleProductPress = async (id) => {
     //alert('Je clique sur un produit avec l\'id : ' + id)
     this.setModalProductVisible(true)
 
   };
 
+//Call Api
   async getProductFromApi(barcode) {
     try {
       let response = await fetch(
@@ -146,7 +148,11 @@ export default class App extends React.Component {
           onRequestClose={() => {
             Alert.alert('Modal has been closed');}}>
           <View style={{flex: 1}}>
-            <AppHeader title="Sanner" />
+            <AppHeader title={this.state.products[0].name} />
+              <Text style={fontsStyle.productName}>
+                {this.state.products[0].name}
+              </Text>
+
             <TouchableOpacity 
               onPress={() => {
                 this.setModalProductVisible(!this.state.modalProductVisible);
