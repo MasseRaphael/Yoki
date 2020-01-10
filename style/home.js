@@ -5,15 +5,15 @@ export const homeStyle = StyleSheet.create({
     width: '100%',
     alignItems: 'flex-start',
     justifyContent: 'center',
-    height: 50,
+    height: 55,
     borderBottomWidth: 2,
-    borderBottomColor: 'lightgrey'
+    borderBottomColor: 'lightseagreen'
   },
   scrollProductView : {
     width: '90%',
     alignSelf: 'center',
     borderWidth:1,
-    borderColor: 'lightgrey',
+    borderColor: 'lightseagreen',
     borderRadius: 20,
     padding: 10,
     marginBottom: 10,
@@ -23,7 +23,7 @@ export const homeStyle = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     height: 100,
-    backgroundColor: 'rgba(0,0,0,0.3)',
+    backgroundColor: 'lightblue',
     marginBottom: 30,
   },
   scanButton: {

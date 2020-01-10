@@ -3,7 +3,7 @@ import { StyleSheet} from 'react-native';
 export const fontsStyle = StyleSheet.create({
   productName: {
     fontSize: 16,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
 
   nutriScore: {
@@ -11,6 +11,7 @@ export const fontsStyle = StyleSheet.create({
     fontWeight: 'bold',
     color: 'red',
     textTransform: "uppercase",
+    marginLeft: 10
   },
 
   productScanDate: {
@@ -19,5 +20,13 @@ export const fontsStyle = StyleSheet.create({
   },
   scanButtonText: {
     fontSize: 16,
+  },
+  tittleModalProduct: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    margin: 10,
+  },
+  modalProductInformation: {
+    marginLeft: 10,
   }
 })

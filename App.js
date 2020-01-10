@@ -140,7 +140,9 @@ export default class App extends React.Component {
                 width: "100%",
                 height: 70,
                 left: 0, 
-                bottom: 0}}>
+                bottom: 0,
+                alignItems: 'center',
+                justifyContent: 'center'}}>
 
 
                 <Text>Fermer</Text>
@@ -171,7 +173,9 @@ export default class App extends React.Component {
                   width: "100%",
                   height: 70,
                   left: 0, 
-                  bottom: 0}}>
+                  bottom: 0,
+                  alignItems: 'center',
+                  justifyContent: 'center'}}>
 
                 <Text>Fermer</Text>
               </TouchableOpacity>

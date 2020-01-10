@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, TouchableOpacity, View} from 'react-native';
+import {Text, TouchableOpacity, View, ScrollView} from 'react-native';
 import {homeStyle} from "../style/home";
 import {fontsStyle} from "../style/fonts";
 
@@ -15,12 +15,13 @@ export default class ProductText extends React.Component {
     }
     return (
         <View>
-          <Text style={fontsStyle.productName}>Nom : {this.props.data.product_name}</Text>
-          <Text style={fontsStyle.productName}>Fabricant : </Text><Text>{this.props.data.brands_tags}</Text>
-          <Text style={fontsStyle.productName}>Site Internet : </Text><Text>{this.props.data.link}</Text>
-          <Text style={fontsStyle.productName}>Nutriscore : </Text><Text style={fontsStyle.nutriScore}>{this.props.data.nutrition_grade_fr}</Text>
-          <Text style={fontsStyle.productName}>Ingredients : </Text><Text>{this.props.data.ingredients_text}</Text>
-
+          <Text style={fontsStyle.tittleModalProduct}>Nom du produit : {this.props.data.product_name}</Text>
+          <Text style={fontsStyle.tittleModalProduct}>Code : </Text><Text style={fontsStyle.modalProductInformation}>{this.props.data.code}</Text>
+          <Text style={fontsStyle.tittleModalProduct}>Fabricant : </Text><Text style={fontsStyle.modalProductInformation}>{this.props.data.brands_tags}</Text>
+          <Text style={fontsStyle.tittleModalProduct}>Site Internet : </Text><Text style={fontsStyle.modalProductInformation}>{this.props.data.link}</Text>
+          <Text style={fontsStyle.tittleModalProduct}>Nutriscore : </Text><Text style={fontsStyle.nutriScore}>{this.props.data.nutrition_grade_fr}</Text>
+          <Text style={fontsStyle.tittleModalProduct}>Ingredients : </Text><Text style={fontsStyle.modalProductInformation}>{this.props.data.ingredients_text}</Text>
+          <Text style={fontsStyle.tittleModalProduct}>Attention ! Contient de {this.props.data.ingredients_from_palm_oil_tags}</Text>
         </View>
     );
   }
